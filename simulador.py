@@ -99,9 +99,9 @@ def main():
     conn = None
     try:
         # 2. Conectar ao Banco
-      # 2. Conectar ao Banco
         print("Conectando ao banco Neon (pode demorar se estiver 'dormindo')...")
-  
+        
+        # CORREÇÃO: Aumenta o timeout para o Neon "acordar"
         conn = psycopg2.connect(DB_URL, connect_timeout=30)
         cursor = conn.cursor()
         print("Conexão estabelecida.")
@@ -150,5 +150,4 @@ def main():
 
 # --- Ponto de Entrada do Script ---
 if __name__ == "__main__":
-
     main()
