@@ -99,8 +99,12 @@ def main():
     conn = None
     try:
         # 2. Conectar ao Banco
-        conn = psycopg2.connect(DB_URL)
+      # 2. Conectar ao Banco
+        print("Conectando ao banco Neon (pode demorar se estiver 'dormindo')...")
+  
+        conn = psycopg2.connect(DB_URL, connect_timeout=30)
         cursor = conn.cursor()
+        print("Conexão estabelecida.")
         
         # 3. Ler os tanques existentes
         lista_ids_tanques = obter_ids_dos_tanques(cursor)
@@ -146,4 +150,5 @@ def main():
 
 # --- Ponto de Entrada do Script ---
 if __name__ == "__main__":
+
     main()
